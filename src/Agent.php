@@ -492,6 +492,24 @@ class Agent extends Mobile_Detect {
 
         return parent::version($propertyName, $type);
     }
+    
+    /**
+     * Get the referrer address
+     *
+     */
+    public function referrer()
+    {
+        return ( ! isset($_SERVER['HTTP_REFERER']) OR $_SERVER['HTTP_REFERER'] == '') ? false : trim($_SERVER['HTTP_REFERER']);
+    }
+    
+    /**
+     * Check request is referral or not
+     *
+     */
+    public function is_referral()
+    {
+        return ( ! isset($_SERVER['HTTP_REFERER']) OR $_SERVER['HTTP_REFERER'] == '') ? false : true;
+    }
 
     /**
      * Merge multiple rules into one array.
