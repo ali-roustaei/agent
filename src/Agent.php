@@ -506,7 +506,7 @@ class Agent extends Mobile_Detect {
      * Check request is referral or not
      *
      */
-    public function is_referral()
+    public function isReferral()
     {
         return ( ! isset($_SERVER['HTTP_REFERER']) OR $_SERVER['HTTP_REFERER'] == '') ? false : true;
     }
