@@ -161,6 +161,22 @@ Get the robot name. This can find most of major robots like Google, Facebook, Tw
 $robot = $agent->robot();
 ```
 
+### Referral detection
+
+Check if the request is referral or not.
+
+```php
+$agent->isReferral();
+```
+
+### Referrer Address
+
+Get the referrer address.
+
+```php
+$robot = $agent->referrer();
+```
+
 ### Browser/platform version
 
 MobileDetect recently added a `version` method that can get the version number for components. To get the browser or platform version you can use:
