@@ -499,7 +499,7 @@ class Agent extends Mobile_Detect {
      */
     public function referrer()
     {
-        return ( ! isset($_SERVER['HTTP_REFERER']) OR $_SERVER['HTTP_REFERER'] == '') ? false : trim($_SERVER['HTTP_REFERER']);
+        return ( ! isset($_SERVER['HTTP_REFERER']) or $_SERVER['HTTP_REFERER'] == '') ? false : trim($_SERVER['HTTP_REFERER']);
     }
     
     /**
@@ -508,7 +508,21 @@ class Agent extends Mobile_Detect {
      */
     public function isReferral()
     {
-        return ( ! isset($_SERVER['HTTP_REFERER']) OR $_SERVER['HTTP_REFERER'] == '') ? false : true;
+        return ( ! isset($_SERVER['HTTP_REFERER']) or $_SERVER['HTTP_REFERER'] == '') ? false : true;
+    }
+    
+    /**
+     * Get the visitor's IP address
+     *
+     */
+    public function ip()
+    {
+        foreach(array('HTTP_X_FORWARDED_FOR', 'HTTP_CLIENT_IP', 'HTTP_X_CLIENT_IP', 'HTTP_X_CLUSTER_CLIENT_IP') as $header) {
+            if(isset($_SERVER[$header]) && filter_var($_SERVER[$header], FILTER_VALIDATE_IP)) {
+                return $ip = $_SERVER[$header];
+            }
+        }
+        return $_SERVER['REMOTE_ADDR'];
     }
 
     /**
