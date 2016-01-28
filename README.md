@@ -177,6 +177,14 @@ Get the referrer address.
 $robot = $agent->referrer();
 ```
 
+### Visitor's IP Address
+
+Get the visitor's IP address.
+
+```php
+$robot = $agent->ip();
+```
+
 ### Browser/platform version
 
 MobileDetect recently added a `version` method that can get the version number for components. To get the browser or platform version you can use:
